@@ -42,21 +42,26 @@
 -- A. collegeplaying --filter to Vandy in WHERE clause; column schoolid=vandy
 -- B. people --first & last name, 
 -- C. salaries --DECS in WHERE clause
+--possible tbls to use...schools, collegeplaying...and people first...then try to connect it to major leagues and salary 
 
-Select 
-p.namefirst,
-p.namelast,
-cp.schoolid,
-SUM(s.salary) AS total_sal
+-- Select 
+-- p.namefirst,
+-- p.namelast,
+-- cp.schoolid,
+-- s1.schoolname,
+-- MONEY(CAST(SUM(s.salary)AS Numeric)) AS total_sal
 
-From people p
-Inner Join collegeplaying cp 
-on p.playerid = cp.playerid
-Inner Join  salaries s
-on p.playerid = s.playerid
+-- From collegeplaying cp
+-- Left Join schools s1 
+-- on cp.schoolid = s1.schoolid
+-- Left Join  people p
+-- on cp.playerid = p.playerid
 
-WHERE 
-cp.schoolid = 'Vandy'
-Group By 1,2,3
---Order By total_sal DESC
+-- Inner Join  salaries s
+-- on p.playerid = s.playerid
+
+-- WHERE 
+-- s1.schoolname = 'Vanderbilt University'
+-- Group By 1,2,3,4
+-- Order By total_sal DESC
 
