@@ -70,17 +70,21 @@
 -- Determine the number of putouts made by each of these three groups in 2016.
 --i think I need a CASE WHEN statement for this one. 
 
-SELECT 
-CASE WHEN pos = 'OF' THEN 'Outfield'
-     ELSE NULL END AS Outfielder,
-     
-CASE WHEN pos = 'SS' THEN 'Short_Stop'
-     WHEN pos = '1B' THEN 'First_Base'
-     WHEN pos = '2B' THEN 'Second_Base'
-     WHEN pos = '3B' THEN 'Third_Base'
-     ELSE NULL  END AS Infield,
- 
- CASE WHEN pos = 'P' OR 'C' THEN 'Battery'
-      ELSE NULL END AS Battery
+-- SELECT --help from team mebrs in group 3 in cleaning up my case statement
+-- SUM (po), 
+-- CASE WHEN pos = 'OF' THEN 'Outfield'
+        
+--     WHEN pos = 'SS' OR
+--      pos = '1B' OR
+--      pos = '2B' OR
+--      pos = '3B' THEN 'Infield'
+   
+--  WHEN pos = 'P' OR 
+--       pos = 'C' THEN 'Battery'
+--      END AS Position
+      
+-- FROM fielding  
+-- WHERE yearid = '2016'
 
-FROM fielding  
+-- Group BY position
+
