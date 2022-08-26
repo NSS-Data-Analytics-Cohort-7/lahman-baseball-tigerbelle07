@@ -88,3 +88,18 @@
 
 -- Group BY position
 
+-- 5.Find the average number of strikeouts per game by decade since 1920. 
+-- Round the numbers you report to 2 decimal places. Do the same for home runs per game. Do you see any trends?
+--start with batting tbl
+
+-- SELECT 
+-- teamid,
+-- g as Games,
+-- ((yearid/10)*10) as decade, --help from Becca
+-- ROUND(AVG(SO),2) AS Avg_Strikeouts,
+-- ROUND(AVG(HR),2) AS Avg_Homeruns
+
+-- FROM batting
+
+-- GROUP BY 1,2,3
+-- ORDER BY decade DESC
