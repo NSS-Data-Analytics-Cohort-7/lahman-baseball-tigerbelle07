@@ -65,3 +65,22 @@
 -- Group By 1,2,3,4
 -- Order By total_sal DESC
 
+-- 4.Using the fielding table, group players into three groups based on their position: 
+-- label players with position OF as "Outfield", those with position "SS", "1B", "2B", and "3B" as "Infield", and those with position "P" or "C" as "Battery". 
+-- Determine the number of putouts made by each of these three groups in 2016.
+--i think I need a CASE WHEN statement for this one. 
+
+SELECT 
+CASE WHEN pos = 'OF' THEN 'Outfield'
+     ELSE NULL END AS Outfielder,
+     
+CASE WHEN pos = 'SS' THEN 'Short_Stop'
+     WHEN pos = '1B' THEN 'First_Base'
+     WHEN pos = '2B' THEN 'Second_Base'
+     WHEN pos = '3B' THEN 'Third_Base'
+     ELSE NULL  END AS Infield,
+ 
+ CASE WHEN pos = 'P' OR 'C' THEN 'Battery'
+      ELSE NULL END AS Battery
+
+FROM fielding  
