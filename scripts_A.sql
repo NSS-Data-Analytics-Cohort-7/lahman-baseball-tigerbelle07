@@ -147,8 +147,8 @@
 --possible tbls - Teams--wrld series winner & wins
 
 -- SELECT 
--- teamid,
--- SUM(w) as total_wins
+-- teamid,                                              
+-- MAX(w) as total_wins
 -- FROM teams
 -- WHERE 
 -- WSWin = 'Y'
@@ -156,19 +156,38 @@
 -- GROUP BY 1
 -- ORDER BY total_wins ASC
 
+
+-- SELECT 
+-- teamid,
+-- MAX(w) as total_wins --help from tyler
+-- FROM teams
+-- WHERE 
+-- WSWin = 'N'
+-- and Yearid BETWEEN '1970' AND '2016'
+-- GROUP BY 1
+-- ORDER BY total_wins ASC
+
+
 -- 8.Using the attendance figures from the homegames table, find the teams and parks which had the top 5 average attendance per game in 2016 (where average attendance is defined as total attendance divided by number of games). 
 -- Only consider parks where there were at least 10 games played. Report the park name, team name, and average attendance. 
 -- Repeat for the lowest 5 average attendance.
 --possible tbs -homegames - attendance; games played. I need park info--parks also use homegames tbl to connect parks tbl. --teams tbl for team info.
---will have to create a sub query to connect teams to park and homegames
-SELECT 
-p.park.name,
-t.name,
-SUM(h.attendance) as total_attend
+--will have to create a sub query to connect teams to park and homegames--team from homegames can connect to teamid from teams tbl. 
 
-FROM homegames h
-LEFT JOIN parks p
-ON p.park = p.park
-LEFT JOIN teams t
-ON 
+-- SELECT
+-- p.park_name, 
+-- t.name,
+-- SUM(h.attendance) as total_attend    
 
+-- FROM homegames h
+-- LEFT JOIN parks p
+-- ON h.park = p.park
+-- LEFT JOIN teams t
+-- ON h.team = t.teamid
+
+-- WHERE h.games >10    
+-- GROUP BY 1,2
+
+
+-- SELECT DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where
+-- table_schema = ’yourDatabaseName’ and table_name = ’yourTableName’.
