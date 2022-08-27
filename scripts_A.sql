@@ -106,7 +106,7 @@
 -- ORDER BY decade DESC
 
 
-Redo 8.27.22 --help from Kevin 
+--Redo 8.27.22 --help from Kevin 
 -- SELECT
 -- --teamid,
 -- --g AS Games,
@@ -124,18 +124,34 @@ Redo 8.27.22 --help from Kevin
 -- Consider only players who attempted at least 20 stolen bases.
 --possible tbls - teams for stolen bases (SB) --I need player info --so pl,--people & batting(help frm Tim) 
 
-SELECT 
-p.namegiven,
-sum(b.sb)/sum(b.cs) *100 AS pct_sb
+-- SELECT --help by tim and jake
+-- p.namegiven,
+-- CAST(b.sb as FLOAT)/CAST(b.sb + b.cs as FLOAT) AS pct_sb
 
-FROM batting b
-LEFT JOIN people p
-on b.playerid = p.playerid
+-- FROM batting b
+-- LEFT JOIN people p
+-- on b.playerid = p.playerid
 
-WHERE 
-b.yearid = '2016'
-AND 
-pct_
+-- WHERE 
+-- b.yearid = 2016
+-- AND 
+-- CAST(b.sb + b.cs as FLOAT) > 20
 
+-- GROUP BY 1,2
 
+-- 7.From 1970 – 2016, what is the largest number of wins for a team that did not win the world series? 
+-- What is the smallest number of wins for a team that did win the world series? 
+-- Doing this will probably result in an unusually small number of wins for a world series champion – determine why this is the case. 
+-- Then redo your query, excluding the problem year. 
+-- How often from 1970 – 2016 was it the case that a team with the most wins also won the world series? What percentage of the time?
+--possible tbls - Teams--wrld series winner & wins
 
+-- SELECT 
+-- teamid,
+-- SUM(w) as total_wins
+-- FROM teams
+-- WHERE 
+-- WSWin = 'Y'
+-- and Yearid BETWEEN '1970' AND '2016'
+-- GROUP BY 1
+-- ORDER BY total_wins ASC
