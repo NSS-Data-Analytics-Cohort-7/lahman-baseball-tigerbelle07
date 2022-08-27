@@ -147,7 +147,7 @@
 --possible tbls - Teams--wrld series winner & wins
 
 -- SELECT 
--- teamid,                                              
+-- name,                                            
 -- MAX(w) as total_wins
 -- FROM teams
 -- WHERE 
@@ -158,7 +158,7 @@
 
 
 -- SELECT 
--- teamid,
+-- name,
 -- MAX(w) as total_wins --help from tyler
 -- FROM teams
 -- WHERE 
