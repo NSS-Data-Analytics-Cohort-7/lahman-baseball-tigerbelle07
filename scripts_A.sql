@@ -199,7 +199,7 @@
 -- SELECT
 -- p.park_name, 
 -- t.name,
--- SUM(h.attendance) as total_attend    
+-- ROUND(SUM(h.attendance),2)/ ROUND(SUM(h.games),2) as avg_attend    
 
 -- FROM homegames h
 -- LEFT JOIN parks p
@@ -207,9 +207,56 @@
 -- LEFT JOIN teams t
 -- ON h.team = t.teamid
 
--- WHERE h.games >10    
+-- WHERE h.games >10  
+-- AND h.year = '2016'
 -- GROUP BY 1,2
 
+--Part B -lowest 5 AVG
+-- SELECT
+-- p.park_name, 
+-- t.name,
+-- ROUND(SUM(h.attendance),2)/ ROUND(SUM(h.games),2) as avg_attend    
 
+-- FROM homegames h
+-- LEFT JOIN parks p
+-- ON h.park = p.park
+-- LEFT JOIN teams t
+-- ON h.team = t.teamid
+
+-- WHERE h.games < 5  
+-- AND h.year = '2016'
+-- GROUP BY 1,2
+--Fort Bragg Field(Park), Atlanta Braves(Team Name), 12,582
 -- SELECT DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where
 -- table_schema = ’yourDatabaseName’ and table_name = ’yourTableName’.
+
+-- 9.Which managers have won the TSN Manager of the Year award in both the National League (NL) and the American League (AL)? 
+-- Give their full name and the teams that they were managing when they won the award.
+--possible tbls --awardsmangers, people tbl for full name, allstarfull tbl
+--awardsmanagers tbl
+--playerid -use to join to other tbls
+--awardid
+--lgid- league info
+
+SELECT 
+p.namegiven,
+t.name,
+am.awardid,
+am.yearid,
+am.lgid
+
+FROM awardsmanagers am
+LEFT JOIN people p
+ON am.playerid = p.playerid
+LEFT JOIN teams t
+ON am.yearid = t.yearid
+AND am.lgid = t.lgid
+
+WHERE 
+am.lgid IN ( 'AL', 'NL')
+
+
+
+
+
+
