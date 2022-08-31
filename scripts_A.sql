@@ -238,27 +238,42 @@
 --awardid
 --lgid- league info
 
+-- SELECT --come back to this 
+-- p.namegiven,
+-- t.name,
+-- am.awardid,
+-- am.lgid,
+
+-- FROM awardsmanagers am
+-- LEFT JOIN people p
+-- ON am.playerid = p.playerid
+-- LEFT JOIN teams t
+-- ON am.yearid = t.yearid
+-- AND am.lgid = t.lgid
+
+-- WHERE 
+-- am.lgid =('AL','NL')
+-- AND 
+-- am.awardid = 'TSN Manager of the Year'
+
+-- 10.Find all players who hit their career highest number of home runs in 2016. 
+-- Consider only players who have played in the league for at least 10 years, and who hit at least one home run in 2016. 
+-- Report the players' first and last names and the number of home runs they hit in 2016.
+--possible tbls - teams, & people..maybe appearances to join to people tbl.
+
 SELECT 
 p.namegiven,
-t.name,
-am.awardid,
-am.yearid,
-am.lgid
+EXTRACT(year from year) as Year,
+SUM(t.g)
+--Max(t.hr)
 
-FROM awardsmanagers am
+FROM teams t
+LEFT JOIN appearances a
+ON t.yearid = a.yearid
 LEFT JOIN people p
-ON am.playerid = p.playerid
-LEFT JOIN teams t
-ON am.yearid = t.yearid
-AND am.lgid = t.lgid
+ON a.playerid = p.playerid
 
-WHERE 
-am.lgid IN ('AL', 'NL')
-AND 
-am.awardid = 'TSN Manager of the Year'
-
-
-
-
+--WHERE
+GROUP BY 1,2
 
 
