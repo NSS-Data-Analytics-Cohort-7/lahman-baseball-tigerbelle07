@@ -253,7 +253,9 @@ ON am.yearid = t.yearid
 AND am.lgid = t.lgid
 
 WHERE 
-am.lgid IN ( 'AL', 'NL')
+am.lgid IN ('AL', 'NL')
+AND 
+am.awardid = 'TSN Manager of the Year'
 
 
 
