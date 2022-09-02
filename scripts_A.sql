@@ -234,46 +234,124 @@
 -- Give their full name and the teams that they were managing when they won the award.
 --possible tbls --awardsmangers, people tbl for full name, allstarfull tbl
 --awardsmanagers tbl
---playerid -use to join to other tbls
+--playerid -use to join to other tbls 
 --awardid
---lgid- league info
+--lgid- league info -- help from Abi, Christian & Alex
+
+-- WITH NL AS (
+    
+--               SELECT 
+--               playerid,
+--               awardid,
+--               lgid,
+--               yearid
+--           FROM awardsmanagers
+--           WHERE lgid ='NL'
+--           AND awardid ='TSN Manager of the Year'
+--     ),
+    
+--    AL AS (
+    
+--               SELECT 
+--               playerid,
+--               awardid,
+--               lgid,
+--               yearid
+--           FROM awardsmanagers
+--           WHERE lgid ='AL'
+--           AND awardid ='TSN Manager of the Year'
+--     )
+    
+    
+-- SELECT 
+-- p.namegiven,
+-- t.name,
+-- al.lgid,
+-- nl.lgid
+
+-- FROM nl
+-- INNER JOIN al
+-- ON nl.playerid = al.playerid
+
+-- LEFT JOIN people p 
+-- ON nl.playerid = p.playerid AND al.playerid = p.playerid
+
+-- LEFT JOIN teams t
+-- ON nl.lgid = t.lgid AND al.yearid = t.yearid
+--James Richard & David Allen...don't have teams info...ran out of steam
+ 
+
+
+ 
+
+
+
+
+
 
 -- SELECT --come back to this 
 -- p.namegiven,
 -- t.name,
 -- am.awardid,
 -- am.lgid,
+-- am2.awardid,
+-- am2.lgid
 
--- FROM awardsmanagers am
+-- FROM teams t
+
+-- LEFT JOIN awardsmanagers am
+-- ON t.yearid = am.yearid
+-- and t.lgid = am.lgid
+-- AND am.awardid = 'TSN Manager of the Year' 
+-- AND am.lgid = 'NL'
+-- AND am.lgid IS NOT NULL
+
+-- LEFT JOIN 
+-- (
+-- SELECT 
+-- awardid,
+-- lgid    
+-- FROM awardsmanagers 
+ 
+-- WHERE    
+-- awardid = 'TSN Manager of the Year' 
+-- AND lgid = 'AL'
+-- AND lgid IS NOT NULL
+-- ) am2
+-- ON t.yearid = am2.yearid
+-- and t.lgid = am2.lgid
+
 -- LEFT JOIN people p
--- ON am.playerid = p.playerid
--- LEFT JOIN teams t
--- ON am.yearid = t.yearid
--- AND am.lgid = t.lgid
+-- ON am1.playerid = p.playerid
 
--- WHERE 
--- am.lgid =('AL','NL')
--- AND 
--- am.awardid = 'TSN Manager of the Year'
+
+
+
+
+
+
+
+
+
 
 -- 10.Find all players who hit their career highest number of home runs in 2016. 
 -- Consider only players who have played in the league for at least 10 years, and who hit at least one home run in 2016. 
 -- Report the players' first and last names and the number of home runs they hit in 2016.
 --possible tbls - teams, & people..maybe appearances to join to people tbl.
 
-SELECT 
-p.namegiven,
-EXTRACT(year from year) as Year,
-SUM(t.g)
---Max(t.hr)
+-- SELECT 
+-- p.namegiven,
+-- EXTRACT(year from year) as Year,
+-- SUM(t.g)
+-- --Max(t.hr)
 
-FROM teams t
-LEFT JOIN appearances a
-ON t.yearid = a.yearid
-LEFT JOIN people p
-ON a.playerid = p.playerid
+-- FROM teams t
+-- LEFT JOIN appearances a
+-- ON t.yearid = a.yearid
+-- LEFT JOIN people p
+-- ON a.playerid = p.playerid
 
---WHERE
-GROUP BY 1,2
+-- --WHERE
+-- GROUP BY 1,2
 
 
